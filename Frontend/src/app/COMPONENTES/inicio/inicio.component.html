@@ -1,0 +1,31 @@
+<div class="table-responsive">
+<table class="table table-responsive table-hover table-bordered table-m table-light">
+  <thead>
+    <tr class="table-light">
+      <th scope="col">Id</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Año</th>
+      <th scope="col">Duración</th>
+      <th scope="col">Lenguaje</th>
+      <th scope="col">Lanzamiento</th>
+      <th scope="col">País</th>
+      <th class="d-flex justify-content-center" scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of MovieList">
+      <th>{{movie.mov_id}}</th>
+      <td>{{movie.mov_title}}</td>
+      <td>{{movie.mov_year}}</td>
+      <td>{{movie.mov_time}}</td>
+      <td>{{movie.mov_lang}}</td>
+      <td>{{movie.mov_dt_rel}}</td>
+      <td>{{movie.mov_rel_country}}</td>
+      <td class="d-flex justify-content-center">
+<button type="button" class="btn btn-primary mx-2" (click)="updateMovie(movie.mov_id)">Editar</button>
+<button type="button" class="btn btn-danger " (click)="deletedMovie(movie.mov_id)">Eliminar</button>
+      </td>     
+    </tr>   
+  </tbody>
+</table>
+</div>
