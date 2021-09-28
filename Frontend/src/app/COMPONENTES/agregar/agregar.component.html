@@ -1,41 +1,45 @@
 <div class="container" style="padding-bottom: 95px;">
   <div class="row">
-    <form class="col col-md-5 d-flex flex-column mx-auto">
-      <h3 class="my-5 ">Agregar pelicula</h3>
+    <form class="col col-md-5 d-flex flex-column mx-auto" #form="ngForm" (ngSubmit)="addMovie(form)" >
+      <h3 class="my-5" >Agregar pelicula</h3>
       <!-- <div class="mb3">
         <label class="form-label">id</label>
         <input [(ngModel)]="movie.mov_id" class="form-control" type="text" name="nombre"  placeholder="Ingresa el id" title="Id solo acepta numeros" required pattern="^[0-9]" />
       </div> -->
       <div class="mb3">
-        <label class="form-label">Nombre</label>
-        <input [(ngModel)]="movie.mov_title" class="form-control" type="text" name="nombre" placeholder="Ingresa el nombre de la pelicula"required />
+        <label class="form-label">Ingresa el nombre</label>
+        <input  [(ngModel)]="movie.mov_title" class="form-control" type="text" name="nombre" required/>
+        
       </div>
       <div class="mb3">
-        <label class="form-label">Año</label>
-        <input [(ngModel)]="movie.mov_year" class="form-control" type="text" name="Año" placeholder="Ingresa el año" required/>
+        <label  class="form-label">Ingresa el año</label>
+        <input [(ngModel)]="movie.mov_year" pattern="^[0-9]+" pattern="^.{1,4}$"  title="Este campo solo recibe numeros"  class="form-control" type="text" name="Año" required/>
+        <p><small class="text-danger">Este campo solo recibe numeros y un maximo de 4 caracteres *</small></p>
       </div>
       <div class="mb3">
-        <label class="form-label">Duracion</label>
-        <input [(ngModel)]="movie.mov_time" class="form-control" type="text" name="Duracion" placeholder="Ingresa la duración" required/>
+        <label  class="form-label">Ingresa la duración</label>
+        <input [(ngModel)]="movie.mov_time" pattern="^[0-9]+" pattern="^.{1,7}$" title="Este campo solo recibe numeros"  class="form-control" type="text" name="Duracion" required/>
+        <p><small class="text-danger">Este campo solo recibe numeros *</small></p>
       </div>
       <div class="mb3">
-        <label class="form-label">Lenguaje</label>
-        <input [(ngModel)]="movie.mov_lang" class="form-control" type="text" name="Lenguaje" placeholder="Ingresa el lenguaje"/>
+        <label class="form-label">Ingresa el lenguaje</label>
+        <input [(ngModel)]="movie.mov_lang" pattern="^[a-zA-Z ]*$" title="Este campo no recibe numeros" class="form-control" type="text" name="Lenguaje"  required/>
+        <p><small class="text-danger">Este campo no recibe numeros *</small></p>
       </div>
       <div class="mb3">
-        <label class="form-label">Lanzamiento</label>
-        <input [(ngModel)]="movie.mov_dt_rel" class="form-control" type="text" name="Lanzamiento" placeholder="Ingresa el lanzamiento"/>
+        <label class="form-label">Ingresa la fecha de estreno</label>
+        <input [(ngModel)]="movie.mov_dt_rel" class="form-control" type="date" name="Lanzamiento" required/>
       </div>
       <div class="mb3">
-        <label class="form-label">Pais</label>
-        <input [(ngModel)]="movie.mov_rel_country" class="form-control" type="text" name="Pais" placeholder="Ingresa el pais en siglas"/>
+        <label class="form-label font-weight-bold">Ingresa el pais</label>
+        <input [(ngModel)]="movie.mov_rel_country" pattern="^.{1,3}$" title="Este campo no debe exceder 3 caracteres" class="form-control" type="text" name="Pais" placeholder="Ingresa el pais en siglas" required/>
+        <p><small class="text-danger">Este campo no recibe numeros *</small></p>
       </div>
+    
+      <input [disabled]="form.invalid" class="btn btn-{{colorButton}} {{opacity}} my-5 mx-auto w-75" type="submit" value="{{msgInputSend}}">
 
-     <!--  <button >
-        Agregar pelicula
-      </button> -->
+      <!-- <button type="submit" class="btn btn-primary my-5 mx-auto w-75"  >Agregar pelicula</button> -->
 
-      <input (click)="addMovie()" class="btn btn-primary my-5 mx-auto w-75" type="submit" value="Agregar pelicula">
     </form>
   </div>
 </div>
