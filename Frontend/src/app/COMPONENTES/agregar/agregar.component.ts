@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AgregarComponent implements OnInit {
   movie: Movie = {
-    mov_id: '',
+    mov_id: 0,
     mov_title: '',
     mov_year: '',
     mov_time: '',
@@ -24,6 +24,7 @@ export class AgregarComponent implements OnInit {
     //delete this.movie.mov_id; 
 
     this.MovieService.addMovie(this.movie).subscribe();
-    this.router.navigate(['/inicio']); 
+    alert('Pelicula agregada satisfactoriamente')
+    /* this.router.navigate(['/inicio']);  */
   }
 }

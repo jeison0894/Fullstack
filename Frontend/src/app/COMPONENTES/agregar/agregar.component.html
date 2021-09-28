@@ -1,39 +1,41 @@
-<div class="container">
+<div class="container" style="padding-bottom: 95px;">
   <div class="row">
     <form class="col col-md-5 d-flex flex-column mx-auto">
-      <h3 class="my-5">Agregar pelicula</h3>
-      <div class="mb3">
+      <h3 class="my-5 ">Agregar pelicula</h3>
+      <!-- <div class="mb3">
         <label class="form-label">id</label>
-        <input [(ngModel)]="movie.mov_id" class="form-control" type="text" name="nombre" />
-      </div>
+        <input [(ngModel)]="movie.mov_id" class="form-control" type="text" name="nombre"  placeholder="Ingresa el id" title="Id solo acepta numeros" required pattern="^[0-9]" />
+      </div> -->
       <div class="mb3">
         <label class="form-label">Nombre</label>
-        <input [(ngModel)]="movie.mov_title" class="form-control" type="text" name="nombre" />
+        <input [(ngModel)]="movie.mov_title" class="form-control" type="text" name="nombre" placeholder="Ingresa el nombre de la pelicula"required />
       </div>
       <div class="mb3">
         <label class="form-label">Año</label>
-        <input [(ngModel)]="movie.mov_year" class="form-control" type="text" name="Año" />
+        <input [(ngModel)]="movie.mov_year" class="form-control" type="text" name="Año" placeholder="Ingresa el año" required/>
       </div>
       <div class="mb3">
         <label class="form-label">Duracion</label>
-        <input [(ngModel)]="movie.mov_time" class="form-control" type="text" name="Duracion" />
+        <input [(ngModel)]="movie.mov_time" class="form-control" type="text" name="Duracion" placeholder="Ingresa la duración" required/>
       </div>
       <div class="mb3">
         <label class="form-label">Lenguaje</label>
-        <input [(ngModel)]="movie.mov_lang" class="form-control" type="text" name="Lenguaje" />
+        <input [(ngModel)]="movie.mov_lang" class="form-control" type="text" name="Lenguaje" placeholder="Ingresa el lenguaje"/>
       </div>
       <div class="mb3">
         <label class="form-label">Lanzamiento</label>
-        <input [(ngModel)]="movie.mov_dt_rel" class="form-control" type="text" name="Lanzamiento" />
+        <input [(ngModel)]="movie.mov_dt_rel" class="form-control" type="text" name="Lanzamiento" placeholder="Ingresa el lanzamiento"/>
       </div>
       <div class="mb3">
         <label class="form-label">Pais</label>
-        <input [(ngModel)]="movie.mov_rel_country" class="form-control" type="text" name="Pais" />
+        <input [(ngModel)]="movie.mov_rel_country" class="form-control" type="text" name="Pais" placeholder="Ingresa el pais en siglas"/>
       </div>
 
-      <button (click)="addMovie()" class="btn btn-primary my-5 mx-auto w-75">
+     <!--  <button >
         Agregar pelicula
-      </button>
+      </button> -->
+
+      <input (click)="addMovie()" class="btn btn-primary my-5 mx-auto w-75" type="submit" value="Agregar pelicula">
     </form>
   </div>
 </div>
