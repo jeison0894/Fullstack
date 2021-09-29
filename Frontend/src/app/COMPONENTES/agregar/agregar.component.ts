@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie, MovieService } from 'src/app/SERVICES/movie.service';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Movie,MovieService } from 'src/app/SERVICES/movie.service';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
   styleUrls: ['./agregar.component.css'],
 })
 export class AgregarComponent implements OnInit {
-
 
   movie: Movie = {
     mov_id: 0,
@@ -23,14 +22,32 @@ export class AgregarComponent implements OnInit {
   msgInputSend:string='Agregar pelicula';
   colorButton:string="secondary";
   opacity:string ="";
-  
 
-  constructor(private MovieService: MovieService, private router: Router) {}
+   form: FormGroup;
 
-  ngOnInit(): void {
-    
+  constructor(private formbuilder: FormBuilder, private movieService: MovieService) {
+    this.buildForm();
   }
 
+  ngOnInit(): void {}
+
+  private buildForm(){
+    this.form = this.formbuilder.group({
+
+title : ['',Validators.required],
+  year : ['',[Validators.required,,Validators.maxLength(4),Validators.pattern(/^[0-9]+/)]],
+      time : ['',[Validators.required,Validators.maxLength(7),Validators.pattern(/^[0-9]+/)]],
+   lang : ['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/)]],
+  release : ['',Validators.required],
+  country : ['',[Validators.required,Validators.maxLength(3),Validators.pattern(/^[a-zA-Z ]*$/)]],
+    })    
+
+/* this.form.valueChanges
+.pipe(debounceTime(500))
+.subscribe(value =>{
+  console.log(value)
+}) */
+}
 
 messageInput(){
      this.msgInputSend="Pelicula agregada satisfactoriamente"
@@ -41,15 +58,38 @@ messageInput(){
        this.msgInputSend="Agregar pelicula"
         this.colorButton="primary"
         this.opacity =""
-  }, 3000);
+  }, 4000);
 }
 
 
-  addMovie(form:NgForm) { 
+  addMovie(event:Event) { 
+    event.preventDefault()
+if(this.form.valid){
 
-    this.MovieService.addMovie(this.movie).subscribe();  
-    console.log(this.movie)    
-    form.reset()
-   this.messageInput() 
-  }
+  this.movieService.addMovie(this.movie).subscribe(); 
+      this.messageInput() 
+      this.form.reset()
+      console.log(this.movie) 
+}}
+
+
+get yearField(){
+  return this.form.get('year')
+}
+
+get timeField(){
+  return this.form.get('time')
+}
+
+get languageField(){
+  return this.form.get('lang')
+}
+
+get relField(){
+  return this.form.get('release')
+}
+
+get countryField(){
+  return this.form.get('country')
+}
 }

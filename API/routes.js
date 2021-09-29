@@ -31,10 +31,7 @@ router.get('/:id',(req,res)=>{
 router.post('/',(req,res)=>{
 let {mov_id,mov_title,mov_year,mov_time,mov_lang,mov_dt_rel,mov_rel_country}=req.body
  
-
  let sql =  `INSERT INTO movie VALUES(${mov_id},'${mov_title}',${mov_year},${mov_time},'${mov_lang}','${mov_dt_rel}','${mov_rel_country}')`
-
-
 
    connection.query(sql,(err,rows,fields)=>{
       if(err) throw err;

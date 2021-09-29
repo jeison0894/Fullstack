@@ -8,7 +8,7 @@ import { AgregarComponent } from './COMPONENTES/agregar/agregar.component';
 import { ModificarComponent } from './COMPONENTES/modificar/modificar.component';
 import {HttpClientModule} from '@angular/common/http'
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
