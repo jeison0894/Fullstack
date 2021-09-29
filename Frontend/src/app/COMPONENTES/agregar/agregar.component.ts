@@ -34,7 +34,7 @@ export class AgregarComponent implements OnInit {
 
 messageInput(){
      this.msgInputSend="Pelicula agregada satisfactoriamente"
-    this.colorButton="secondary"
+    this.colorButton="success"
     this.opacity ="opacity-100"
 
   setTimeout(() => {
@@ -45,10 +45,9 @@ messageInput(){
 }
 
 
-  addMovie(form:NgForm) {
- 
+  addMovie(form:NgForm) { 
 
-    /*  this.MovieService.addMovie(this.movie).subscribe(); */
+    this.MovieService.addMovie(this.movie).subscribe();  
     console.log(this.movie)    
     form.reset()
    this.messageInput() 
