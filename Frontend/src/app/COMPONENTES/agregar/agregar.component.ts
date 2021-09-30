@@ -38,7 +38,7 @@ title : ['',Validators.required],
   year : ['',[Validators.required,,Validators.maxLength(4),Validators.pattern(/^[0-9]+/)]],
       time : ['',[Validators.required,Validators.maxLength(7),Validators.pattern(/^[0-9]+/)]],
    lang : ['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/)]],
-  release : ['',Validators.required],
+  release : [''],
   country : ['',[Validators.required,Validators.maxLength(3),Validators.pattern(/^[a-zA-Z ]*$/)]],
     })    
 
@@ -83,10 +83,6 @@ get timeField(){
 
 get languageField(){
   return this.form.get('lang')
-}
-
-get relField(){
-  return this.form.get('release')
 }
 
 get countryField(){
