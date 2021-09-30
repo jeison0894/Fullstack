@@ -73,6 +73,10 @@ if(this.form.valid){
 }}
 
 
+get titleField(){
+  return this.form.get('title')
+}
+
 get yearField(){
   return this.form.get('year')
 }

@@ -9,6 +9,9 @@
       <div class="mb3">
         <label class="form-label">Ingresa el nombre</label>
         <input formControlName="title" [(ngModel)]="movie.mov_title" class="form-control" type="text"/>         
+        <p *ngIf="titleField.errors && titleField.dirty">
+       <small class="text-danger" *ngIf="titleField.hasError('required')">Es un campo requerido</small>  
+      </p>
       </div>
 
       <div class="mb-3">
