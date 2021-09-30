@@ -4,7 +4,8 @@ const express = require('express');
 
 
 // Si no existe el puerto con el operador corto circuito lo colocamos en el puerto 3000
-const port = (process.env.port || 3000)
+const port = ( process.env.PORT || 3000);
+const path = require('path');
 
 
 //Creamos la instancia de express guardada en una variable
@@ -18,10 +19,13 @@ app.use(express.json())
 //configuramos el puerto
 app.set('port',port)
 
-
+app.use( express.static('public'))
 //Pasamos las rutas
 app.use('/api',require('./routes'))
 
+app.get( '*', (req, res) => {
+    res.sendFile( path.resolve(__dirname, 'public/index.html'))
+});
 
 //Iniciamos express
 app.listen(app.get('port'),(err)=>{
